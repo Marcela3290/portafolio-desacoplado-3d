@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfesionalInformation index{% endblock %}
+
+{% block body %}
+    <h1>ProfesionalInformation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Professional</th>
+                <th>Experience</th>
+                <th>Skills</th>
+                <th>Socia_networks</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for profesional_information in profesional_informations %}
+            <tr>
+                <td>{{ profesional_information.id }}</td>
+                <td>{{ profesional_information.name }}</td>
+                <td>{{ profesional_information.professional }}</td>
+                <td>{{ profesional_information.experience }}</td>
+                <td>{{ profesional_information.skills }}</td>
+                <td>{{ profesional_information.sociaNetworks }}</td>
+                <td>
+                    <a href="{{ path('app_profesional_information_show', {'id': profesional_information.id}) }}">show</a>
+                    <a href="{{ path('app_profesional_information_edit', {'id': profesional_information.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_profesional_information_new') }}">Create new</a>
+{% endblock %}
